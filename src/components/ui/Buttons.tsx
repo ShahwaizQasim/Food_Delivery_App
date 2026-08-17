@@ -2,21 +2,20 @@ import React from "react";
 import { Pressable, StyleSheet, Text } from "react-native";
 
 type ButtonProps = {
-  label: string;
-  onPress: () => void;
-  color: string,
-  textStyle?: StyleProp<TextStyle>;
+  children: string;
+  onPress?: () => void;
+  btnStyle?: any,
+  textStyle?: any;
 };
 
-const Button = ({ label, onPress, color, textStyle }: ButtonProps) => {
-  const abc = "Syed Shahwaiz";
+const ThemeButton = ({ children, onPress, btnStyle, textStyle }: ButtonProps) => {
   return (
     <Pressable
-      style={[styles.button, {backgroundColor:color}]}
+      style={[styles.button, btnStyle  ]}
       onPress={onPress}
       // onPress={onPress}
     >
-      <Text style={[styles.buttonText, textStyle]}>{label}</Text>
+      <Text style={[styles.buttonText, textStyle]}>{children}</Text>
     </Pressable>
   );
 };
@@ -37,4 +36,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Button;
+export default ThemeButton;

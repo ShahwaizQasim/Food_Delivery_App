@@ -17,7 +17,7 @@ const SearchBar = () => {
           inputMode={"text"}
         />
       </View>
-      <View style={{ marginTop: 30 }}>
+      <View style={{ marginTop: 50 }}>
         <Image
           source={require("../../assets/searchButton.png")}
           style={{ height: 65, width: 65 }}
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     height: 60,
     width: "80%",
     backgroundColor: "white",
-    marginTop: 30,
+    marginTop: 50,
     borderRadius: 20,
     boxShadow: "0 0px 4px #948c8c",
   },

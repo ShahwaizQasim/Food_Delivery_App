@@ -1,5 +1,5 @@
-import React from "react";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import React from 'react';
+import { Image, Pressable, StyleSheet, Text, View,TouchableOpacity } from 'react-native';
 
 type Product = {
   id: number;
@@ -11,11 +11,15 @@ type Product = {
 
 type ProductCardProps = {
   item: Product;
+  onPress?: ()=> void;
 };
 
-const ProductCard = ({ item }: ProductCardProps) => {
+
+const ProductCard = ({ item, onPress  }: ProductCardProps) => {
   return (
-    <View style={styles.card}>
+       <Pressable style={styles.card} onPress={onPress}>
+
+    <View >
       <Image
         source={item.image}
         style={styles.productImage}
@@ -38,21 +42,23 @@ const ProductCard = ({ item }: ProductCardProps) => {
         </Pressable>
       </View>
     </View>
+       </Pressable> 
+
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    width: "48%",
-    justifyContent: "center",
+    width: '48%',
+    justifyContent: 'center',
     minHeight: 225,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     borderRadius: 20,
     padding: 10,
 
     elevation: 5,
 
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 3,
@@ -62,50 +68,50 @@ const styles = StyleSheet.create({
   },
 
   productImage: {
-    width: "100%",
+    width: '100%',
     height: 115,
     marginBottom: 5,
   },
 
   productName: {
     fontSize: 18,
-    fontWeight: "700",
-    color: "#000",
+    fontWeight: '700',
+    color: '#000',
     marginTop: 3,
   },
 
   description: {
     fontSize: 16,
-    color: "#3D3535",
+    color: '#3D3535',
     marginTop: 3,
   },
 
   bottomRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginTop: 8,
   },
 
   ratingContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 
   star: {
-    color: "#FF8A2B",
+    color: '#FF8A2B',
     fontSize: 20,
     marginRight: 5,
   },
 
   rating: {
     fontSize: 15,
-    color: "#3D3535",
+    color: '#3D3535',
   },
 
   heart: {
     fontSize: 34,
-    color: "#3D3535",
+    color: '#3D3535',
     lineHeight: 34,
   },
 });

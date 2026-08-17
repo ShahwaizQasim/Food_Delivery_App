@@ -4,23 +4,22 @@
  *
  * @format
  */
-import React from "react";
-import {
-  View,
-  StyleSheet,
-  StatusBar,
-  TextInput,
-  Text,
-  ScrollView,
-  Image,
-} from "react-native";
-import FoodDeliveryScreen from "./src/screens/FoodDeliveryScreen";
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import FoodDeliveryScreen from './src/screens/FoodDeliveryScreen';
+import FoodDetails from './src/screens/FoodDetails';
+
+const Stack = createNativeStackNavigator();
 
 function App() {
   return (
-    // <ScrollView style={styles.scrollContainer}>
-    <FoodDeliveryScreen />
-    // </ScrollView>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="FoodDeliveryScreen" component={FoodDeliveryScreen} />
+        <Stack.Screen name="FoodDetail" component={FoodDetails} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 

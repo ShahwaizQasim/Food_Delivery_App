@@ -13,7 +13,7 @@ import {
   Text,
   ScrollView,
 } from "react-native";
-import Button from "./src/components/ui/Buttons.tsx";
+import ThemeButton from "../components/ui/Buttons";
 
 function App() {
   const [data, setData] = useState({
@@ -55,10 +55,10 @@ function App() {
             value={data.password}
             onChangeText={(text) => handleChange("password", text)}
           />
-          <Button
-            label={"Login"}
+          <ThemeButton
+            children={"Login"}
             textStyle={{ fontSize: 20 }}
-            color={"black"}
+            btnStyle={{color:'black'}}
           />
         </View>
       </View>

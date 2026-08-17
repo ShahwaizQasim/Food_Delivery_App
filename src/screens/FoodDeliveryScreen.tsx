@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import { StyleSheet, View, StatusBar } from "react-native";
-import Header from "../components/layout/Header.tsx";
-import Footer from "../components/layout/Footer";
-import SearchBar from "../components/layout/SearchBar";
-import CategoryTabs from "../components/layout/CategoryTabs";
-import ProductsList from "../components/layout/ProductsList";
+import React, { useState } from 'react';
+import { StyleSheet, View, StatusBar } from 'react-native';
+import Header from '../components/layout/Header.tsx';
+import Footer from '../components/layout/Footer';
+import SearchBar from '../components/layout/SearchBar';
+import CategoryTabs from '../components/layout/CategoryTabs';
+import ProductsList from '../components/Food/ProductsList.tsx';
+import Layout from '../components/ui/layout.tsx';
 
-const FoodDeliveryScreen = () => {
+const FoodDeliveryScreen = ({navigation}:any) => {
   return (
-    <View style={styles.containerFluid}>
+    <Layout>
       <View style={styles.container}>
         <StatusBar
           translucent
@@ -18,22 +19,18 @@ const FoodDeliveryScreen = () => {
         <Header />
         <SearchBar />
         <CategoryTabs />
-        <ProductsList />
+        <ProductsList navigation={navigation}  />
       </View>
       <Footer />
-    </View>
+    </Layout>
   );
 };
 
 const styles = StyleSheet.create({
-  containerFluid: {
-    flex: 1,
-    width: "100%",
-  },
   container: {
     flex: 1,
-    width: "90%",
-    margin: "auto",
+    width: '90%',
+    margin: 'auto',
   },
 });
 
