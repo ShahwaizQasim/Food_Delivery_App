@@ -14,7 +14,7 @@ const ProductsList = ({ navigation }: any) => {
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
           <ProductCard
-            onPress={() => navigation.navigate('FoodDetail')}
+            onPress={() => navigation.navigate('FoodDetail', {id: item?.id})}
             item={item}
           />
         )}

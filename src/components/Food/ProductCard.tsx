@@ -1,5 +1,12 @@
 import React from 'react';
-import { Image, Pressable, StyleSheet, Text, View,TouchableOpacity } from 'react-native';
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 
 type Product = {
   id: number;
@@ -11,39 +18,36 @@ type Product = {
 
 type ProductCardProps = {
   item: Product;
-  onPress?: ()=> void;
+  onPress?: () => void;
 };
 
-
-const ProductCard = ({ item, onPress  }: ProductCardProps) => {
+const ProductCard = ({ item, onPress }: ProductCardProps) => {
   return (
-       <Pressable style={styles.card} onPress={onPress}>
+    <Pressable style={styles.card} onPress={onPress}>
+      <View>
+        <Image
+          source={item.image}
+          style={styles.productImage}
+          resizeMode="contain"
+        />
 
-    <View >
-      <Image
-        source={item.image}
-        style={styles.productImage}
-        resizeMode="contain"
-      />
+        <Text style={styles.productName}>{item.name}</Text>
 
-      <Text style={styles.productName}>{item.name}</Text>
+        <Text style={styles.description}>{item.description}</Text>
 
-      <Text style={styles.description}>{item.description}</Text>
+        <View style={styles.bottomRow}>
+          <View style={styles.ratingContainer}>
+            <Text style={styles.star}>★</Text>
 
-      <View style={styles.bottomRow}>
-        <View style={styles.ratingContainer}>
-          <Text style={styles.star}>★</Text>
+            <Text style={styles.rating}>{item.rating}</Text>
+          </View>
 
-          <Text style={styles.rating}>{item.rating}</Text>
+          <Pressable>
+            <Text style={styles.heart}>♡</Text>
+          </Pressable>
         </View>
-
-        <Pressable>
-          <Text style={styles.heart}>♡</Text>
-        </Pressable>
       </View>
-    </View>
-       </Pressable> 
-
+    </Pressable>
   );
 };
 

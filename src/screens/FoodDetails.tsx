@@ -13,11 +13,29 @@ import ThemeButton from '../components/ui/Buttons';
 import FoodImage from '../components/Food/FoodImage';
 import FoodInfo from '../components/Food/FoodInfo';
 import { useNavigation } from '@react-navigation/native';
+import { products } from '../utils/data';
+import MiniHeader from '../components/layout/MiniHeader';
 
-const FoodDetails = () => {
+
+type Product = {
+  id: number;
+  name: string;
+  description: string;
+  rating: number;
+  image: any;
+};
+
+
+const FoodDetails = ({ route }: any) => {
   const [spicyLevel, setSpicyLevel] = useState(0.5); // 0 = Mild, 1 = Hot
   const [portion, setPortion] = useState(2);
   const navigation = useNavigation();
+  const { id } = route.params;
+
+  const productFilter = products.find((item:Product)=> item.id === id);
+  console.log("filter=>", productFilter);
+  
+
   return (
     <Layout>
       <View style={styles.container}>
@@ -27,33 +45,14 @@ const FoodDetails = () => {
           barStyle="light-content"
         />
         {/* header  */}
-        <View style={styles.header}>
-          <View>
-            <TouchableOpacity
-              activeOpacity={0.6}
-              onPress={() => navigation.goBack()}
-              style={{ padding: 8 }}
-            >
-              <Image
-                source={require('../assets/arrow-left.png')}
-                style={styles.ArrowImg}
-              />
-            </TouchableOpacity>
-          </View>
-          <View>
-            <Image
-              source={require('../assets/search.png')}
-              style={styles.ArrowImg}
-            />
-          </View>
-        </View>
-
+       <MiniHeader onPress={() => navigation.goBack()} />
         {/* burerImage  */}
         <FoodImage source={require('../assets/burgerDetail.png')} />
         <View style={styles.textConatiner}>
           <FoodInfo
-            title="Cheeseburger Wendy's Burger"
-            rating="4.9"
+            title={productFilter?.name ?? ''}
+            title2={productFilter?.description ?? ''}
+            rating={productFilter?.rating ?? 0}
             time="26 mins"
             description="The Cheeseburger Wendy's Burger is a classic fast food burger that packs a punch of flavor in every bite. Made with a juicy beef patty cooked to perfection, it's topped with melted American cheese, crispy lettuce, ripe tomato, and crunchy pickles."
           />
@@ -138,15 +137,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '90%',
     margin: 'auto',
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 34,
-  },
-  ArrowImg: {
-    height: 30,
-    width: 30,
   },
   textConatiner: {
     flex: 0.6,

@@ -3,15 +3,16 @@ import React from 'react';
 
 interface FoodProps {
   title: string;
-  rating: string;
+  title2: string;
+  rating: number;
   time: string;
   description: string;
 }
 
-const FoodInfo = ({ title, rating, time, description }: FoodProps) => {
+const FoodInfo = ({ title, title2, rating, time, description }: FoodProps) => {
   return (
-    <View style={{marginTop:30}}>
-      <Text style={styles.heading}>{title}</Text>
+    <View style={{ marginTop: 30 }}>
+      <Text style={styles.heading}>{title} {title2}</Text>
       <View style={styles.ratingContainer}>
         <Text style={styles.star}>★</Text>
 

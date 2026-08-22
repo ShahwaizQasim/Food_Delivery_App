@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, StatusBar } from 'react-native';
 import Header from '../components/layout/Header.tsx';
-import Footer from '../components/layout/Footer';
 import SearchBar from '../components/layout/SearchBar';
 import CategoryTabs from '../components/layout/CategoryTabs';
 import ProductsList from '../components/Food/ProductsList.tsx';
@@ -21,7 +20,6 @@ const FoodDeliveryScreen = ({navigation}:any) => {
         <CategoryTabs />
         <ProductsList navigation={navigation}  />
       </View>
-      <Footer />
     </Layout>
   );
 };

@@ -1,13 +1,15 @@
 import React from 'react';
 import { Image, Pressable, StyleSheet, View } from 'react-native';
 
-const Footer = () => {
+const Footer = ({ navigation }: any) => {
+  console.log("navigation=>", navigation);
+
   return (
     <View style={styles.wrapper}>
       {/* Footer */}
       <View style={styles.footer}>
         {/* Home */}
-        <Pressable style={styles.iconButton}>
+        <Pressable style={styles.iconButton} onPress={() => navigation.navigate('Home')}>
           <Image
             source={require('../../assets/home.png')}
             style={styles.icon}
@@ -15,7 +17,7 @@ const Footer = () => {
         </Pressable>
 
         {/* Profile */}
-        <Pressable style={styles.iconButton}>
+        <Pressable style={styles.iconButton} onPress={() => navigation.navigate('Profile')}>
           <Image
             source={require('../../assets/user.png')}
             style={styles.icon}
@@ -26,7 +28,7 @@ const Footer = () => {
         <View style={styles.centerSpace} />
 
         {/* Orders */}
-        <Pressable style={styles.iconButton}>
+        <Pressable style={styles.iconButton} onPress={() => navigation.navigate('Order')}>
           <Image
             source={require('../../assets/comment.png')}
             style={styles.icon}
